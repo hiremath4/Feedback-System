@@ -24,7 +24,8 @@ def analyze():
         })
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))  # use PORT from environment
+    app.run(host='0.0.0.0', port=port)
 
 
 # Add 'src' directory to the system path

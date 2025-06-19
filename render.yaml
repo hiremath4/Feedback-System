@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: sentiment-analysis-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    plan: free
+    envVars:
+      - key: WATSON_API_KEY
+        value: "CL6Z5EKXRMYt8dV5tdpikjED1pTwMJl8putP3sFaCn6z"  
+      - key: WATSON_URL
+        value: "https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com/instances/7eefac19-8970-4eea-b52c-a6d48009e84d"
+

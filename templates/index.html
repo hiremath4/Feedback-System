@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Sentiment Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="static/style.css" rel="stylesheet">
+    <style>
+    </style>
+
+</head>
+<header class="bg-green-800 text-white text-center py-4 mt-6">
+    <p class="text-lg font-semibold color-red">Customer Feedback System</p>
+</header>
+
+
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Cognitive Customer Insights</h1>
+        <form id="sentimentForm" class="bg-white shadow-md rounded-lg p-6">
+            <label for="user_input" class="block text-gray-700 font-bold mb-2">Enter Customer Feedback:</label>
+            <textarea id="user_input" name="user_input" rows="4" class="w-full p-3 border rounded-lg" placeholder="Type feedback here..."></textarea>
+            <button type="submit" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Analyze Sentiment</button>
+        </form>
+        <div id="result" class="mt-6 text-center text-red-600 font-semibold"></div>
+    </div>
+
+    <script>
+        document.getElementById('sentimentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userInput = document.getElementById('user_input').value;
+
+            fetch('/analyze', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ 'user_input': userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerHTML = `Sentiment: <span class="text-blue-600">${data.sentiment}</span>`;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+   
+</body>
+<footer class="bg-gray-800 text-white text-center py-0 mt-0">
+    <p class="text-lg text-blue-600 font-semibold">Team Members:</p> <span class="text-antiquette-600">Sumit Hiremath, Sohail Arlikatti, Goutami K S</span>
+    <p class="text-sm mt-2">© <span id="year"></span> Cognitive Customer Insights. All rights reserved.</p>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</footer>
+</html>

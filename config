@@ -1,0 +1,4 @@
+# config.py
+WATSON_API_KEY = "CL6Z5EKXRMYt8dV5tdpikjED1pTwMJl8putP3sFaCn6z"
+WATSON_URL = "https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com/instances/7eefac19-8970-4eea-b52c-a6d48009e84d"
+

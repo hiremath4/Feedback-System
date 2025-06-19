@@ -7,7 +7,7 @@ from src.sentiment_analysis import analyze_sentiment
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/feedback-system-oedg.onrender.com')
 def home():
     return render_template('index.html')
 
